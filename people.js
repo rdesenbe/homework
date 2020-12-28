@@ -1,21 +1,27 @@
 
 const readline = require("readline");
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
 
-});
-let storage = []
-while(true){
-rl.question("What is your name",name=>{
-rl.question("Email Address?", email=>{
-    const person = {
-        name:name,
-        email:email
+const main = async ()=>{
+    
+    let storage = []
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    
+    while(true){
+        const name = await add(rl,"What is your name?: ")
+console.log(name)
+        if (name.toLowerCase() = "quit"){
+            break
+        }
     }
-storage.push(person)
-console.log(storage)
-}
-)
 
-})}
+}
+const add = (rl, query)=>{
+    return new Promise(resolve => rl.question(query, ans => {
+       
+        resolve(ans);
+    }))
+}
+main() 
