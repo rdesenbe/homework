@@ -10,8 +10,8 @@ const main = async () => {
   while (true) {
     // sora - search or add
     const sora = await ask(rl, "Search or Add?:  ");
+    // check for add
     if (sora.toLowerCase() == "add") {
-      // check for add
       //prompting user for information to add
       const name = await ask(rl, "What is your name?: ");
       // check for quit
@@ -27,6 +27,9 @@ const main = async () => {
         rl.close();
         break;
       }
+      /*TODO: add a prompt here that asks for the users ETH address
+  once they add their eth address, call the getBalance() function using
+  ethers or web3js. Add their balance and ETH address to the person object below*/
       // create the object to be added to storage
       const person = {
         name: name,
