@@ -1,5 +1,32 @@
 const readline = require("readline");
 const { sortAndStore, ask, search } = require("./peopleFunctions");
+/*
+
+1. TODO: create a function that will be called when user quits.
+
+function will write the contents of storage to a text file before quitting so 
+that the "database of users" will persist after typing quit.
+
+2. TODO: create a function that will be called upon startup.
+
+function will check for a storage.txt and intialzie storage with the contents of 
+text file before starting. If no txt file then proceed with empty storage.
+
+3. TODO: add a prompt inside of your 'add' logic for the persons ETH address. 
+once they add their eth address, call the getBalance() function using ethers 
+or web3js. Add their balance and ETH address to the person object before 
+calling sort and store. 
+
+will need to create an account with infura and get an api in order to access chain
+
+4. TODO: create a function that checks if a users address is holding dai.
+	
+will need to get contract address and abi from etherscan. 
+
+create contract instance for dai using ethers or web3js and then call the balance function on address
+
+  */
+
 const main = async () => {
   let storage = [];
   const rl = readline.createInterface({
@@ -27,9 +54,6 @@ const main = async () => {
         rl.close();
         break;
       }
-      /*TODO: add a prompt here that asks for the users ETH address
-  once they add their eth address, call the getBalance() function using
-  ethers or web3js. Add their balance and ETH address to the person object below*/
       // create the object to be added to storage
       const person = {
         name: name,
