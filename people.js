@@ -1,5 +1,6 @@
 const readline = require("readline");
 const { sortAndStore, ask, search } = require("./peopleFunctions");
+const fs = require("fs");
 /*
 
 1. TODO: create a function that will be called when user quits.
@@ -33,6 +34,7 @@ const main = async () => {
     input: process.stdin,
     output: process.stdout,
   });
+
   // keeps program running until user types 'quit'
   while (true) {
     // sora - search or add
@@ -60,15 +62,15 @@ const main = async () => {
         email: email,
       };
       //call sortAndStore() to add new user to storage
-      console.log(sortAndStore(storage, person)); // sortAndStore called within a console log so we can see result in terminal
+      sortAndStore(storage, person); // sortAndStore called
       console.log("storage size:", storage.length);
       // check for search
     } else if (sora.toLowerCase() == "search") {
       // prompt user for person to search for
       const query = await ask(rl, "Search For (Full Name): ");
+      // check for quit
       if (query.toLowerCase() == "quit") {
-        // check for quit
-        console.log(storage);
+        // save(storage);
         rl.close();
         break;
       }
@@ -79,5 +81,15 @@ const main = async () => {
     }
   }
 };
+// and example save to file function
+const save = (storage) => {
+  let file = fs.createWriteStream("src/storage.txt");
+  file.on("error", (err) => console.error(err));
+  storage.map((person) => {
+    file.write(person.name + ", " + person.email + "," + "\n");
+  });
+  file.end();
+};
 
+const startup = () => {};
 main();

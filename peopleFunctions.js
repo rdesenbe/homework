@@ -103,6 +103,7 @@ const sortAndStore = (storage, person) => {
   }
   return storage;
 };
+
 const search = (query, storage) => {
   //use filter function instead of implementing binary search again
   const result = storage.filter((person) => person.name == query);
